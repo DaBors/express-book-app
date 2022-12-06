@@ -22,3 +22,5 @@ app.get('/', (_: express.Request, res: express.Response) => {
 });
 
 server.listen(port);
+
+export default server;
