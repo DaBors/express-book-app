@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import AuthService from '../services/authService';
+import { v4 as uuidv4 } from "uuid";
+import AuthService from "../services/authService";
 
 export default class User {
 
