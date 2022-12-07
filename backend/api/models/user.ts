@@ -1,3 +1,5 @@
+import AuthService from '../services/authService';
+
 export default class User {
 
     id: string;
@@ -8,7 +10,7 @@ export default class User {
     constructor(username: string, password: string, authorPseudonym: string) {
         this.id = "";
         this.username = username;
-        this.hash = password;
+        this.hash = AuthService.generateHash(password);
         this.authorPseudonym = authorPseudonym;
     }
 
