@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import AuthService from '../services/authService';
 
 export default class User {
@@ -8,7 +9,7 @@ export default class User {
     authorPseudonym: string;
 
     constructor(username: string, password: string, authorPseudonym: string) {
-        this.id = "";
+        this.id = uuidv4();
         this.username = username;
         this.hash = AuthService.generateHash(password);
         this.authorPseudonym = authorPseudonym;
