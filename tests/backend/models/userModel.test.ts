@@ -1,7 +1,7 @@
 import User from "../../../backend/api/models/user";
 import { users, DataService } from "../../../backend/api/services/dataService";
 
-describe("Testing data service functionalities", () => {
+describe("Testing user model functionalities", () => {
 
     afterEach(async () => {
         /**
