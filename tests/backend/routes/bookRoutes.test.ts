@@ -51,4 +51,16 @@ describe("Test all book api endpoints", () => {
         expect(resSecond.body).toEqual([mashasBook]);
     });
 
+    xit("get book detail", async () => {
+        const res = await request(server).get(`/books/${mashasBook.id}`).set("Content-Type", "application/json");
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toEqual(mashasBook);
+
+    });
+
+    xit("can't get book detail with wrong id ", async () => {
+        const res = await request(server).get(`/books/${"notAnId"}`).set("Content-Type", "application/json");
+        expect(res.statusCode).toBe(404);
+    });
+
 });
