@@ -8,6 +8,7 @@ export default class Book {
     title: string;
     description: string;
     author_id: string;
+    author: string;
     coverImage: string;
     price: number;
 
@@ -16,6 +17,7 @@ export default class Book {
         this.title = title;
         this.description = description;
         this.author_id = author.id;
+        this.author = author.authorPseudonym;
         this.coverImage = coverImage;
         this.price = price;
     }
