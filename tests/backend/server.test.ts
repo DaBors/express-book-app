@@ -1,5 +1,5 @@
 import request from "supertest";
-import server from "../../backend/server";
+import { server } from "../../backend/server";
 
 describe("GET /", () => {
 
