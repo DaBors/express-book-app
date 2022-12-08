@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "ts-node ./backend/server.ts",
+    "start": "npx tsc && node --experimental-specifier-resolution=node .\\dist\\backend\\server.js",
     "test": "cross-env NODE_ENV=test jest --testTimeout=5000"
   },
   "dependencies": {
