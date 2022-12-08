@@ -49,15 +49,23 @@ export default class Book {
         return undefined;
     }
 
+    /**
+    * Returns the list of books that are matching the provided filters
+    *
+    * @param title - The `title` of the book to filter it by
+    * @param description - The `description` of the book to filter it by
+    * @param author - The `author` of the book to filter it by
+    * @param price - The `price` of the book to filter it by
+    * 
+    * @returns The list of books that matched the filters
+    */
     static filterBooksBy({ title = "", description = "", author = "", price = 0 }): Book[] {
-        console.log(title)
         var booksToFilter: Book[] = Object.assign([], books);
         if (title) {
             booksToFilter = booksToFilter.filter(
                 book => book.title === title
             )
         }
-        console.log(booksToFilter)
         if (description) {
             booksToFilter = booksToFilter.filter(
                 book => book.description === description
