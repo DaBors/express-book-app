@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "2036004c-5a6b-4820-8859-1dfe26dacb11",
+    "title": "Title",
+    "description": "Description",
+    "author_id": "9d90abc8-5ca0-4dda-a070-21c5ef288bf0",
+    "author": "DefinitelyNotMasha",
+    "coverImage": "https://example.com",
+    "price": 200
+  }
+]
