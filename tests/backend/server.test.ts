@@ -1,10 +1,12 @@
-import request from 'supertest';
-import server from '../../backend/server';
+import request from "supertest";
+import server from "../../backend/server";
 
 describe("GET /", () => {
 
   afterEach(async () => {
-    // Close the server instance after each test
+    /**
+     * Close the server instance after each test
+     */
     await server.close()
   })
 
