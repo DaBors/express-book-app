@@ -19,6 +19,7 @@ describe("Testing book model functionalities", () => {
         DataService.saveBook(mashasBook)
 
         expect(Book.getBookBy({ id: mashasBook.id })).toEqual(mashasBook);
+        expect(Book.getBookBy({ title: mashasBook.title, author_id: masha.id })).toEqual(mashasBook);
     });
 
     xit("cannot find book that doesn't exists", async () => {

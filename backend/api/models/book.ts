@@ -21,15 +21,14 @@ export default class Book {
     }
 
     /**
-    * Returns a `Book` by one of its unique identifiers `id`
+    * Returns a `Book` by one of its unique identifiers `id`, `author_id` and `title` pair
     *
     * @param id - The `id` of the book to look it up by
     * 
     * @returns The `Book` in case it is found by one of its id, returns `undefined` otherwise
     */
-    static getBookBy({ id = "" }): Book | undefined {
+    static getBookBy({ id = "", author_id = "", title = ""}): Book | undefined {
         return undefined;
     }
 
 }
-
