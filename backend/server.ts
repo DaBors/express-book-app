@@ -6,6 +6,7 @@ import debug from "debug";
 import morgan from "morgan";
 
 import { booksRouter } from "./api/routes/booksRoutes";
+import { authRouter } from "./api/routes/auth";
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
@@ -24,6 +25,7 @@ app.get("/", (_: express.Request, res: express.Response) => {
 });
 
 app.use("/books", booksRouter);
+app.use("/auth", authRouter);
 
 server.listen(port);
 
