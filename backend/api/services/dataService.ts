@@ -2,6 +2,9 @@ import * as fs from "fs";
 import User from "../models/user";
 import Book from "../models/book";
 import path from "path";
+import * as dotenv from "dotenv";
+
+dotenv.config()
 
 var development_user_data = JSON.parse(fs.readFileSync(path.resolve("./database/development_users.json"), "utf-8"));
 var test_user_data = JSON.parse(fs.readFileSync(path.resolve("./database/test_users.json"), "utf-8"));
