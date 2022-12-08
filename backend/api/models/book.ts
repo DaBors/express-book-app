@@ -29,7 +29,7 @@ export default class Book {
     * 
     * @returns The `Book` in case it is found by one of its id, returns `undefined` otherwise
     */
-    static getBookBy({ id = "", author_id = "", title = ""}): Book | undefined {
+    static getBookBy({ id = "", author_id = "", title = "" }): Book | undefined {
         var book: Book | undefined;
         if (id) {
             book = books.find((book) => {
@@ -47,6 +47,34 @@ export default class Book {
         }
 
         return undefined;
+    }
+
+    static filterBooksBy({ title = "", description = "", author = "", price = 0 }): Book[] {
+        console.log(title)
+        var booksToFilter: Book[] = Object.assign([], books);
+        if (title) {
+            booksToFilter = booksToFilter.filter(
+                book => book.title === title
+            )
+        }
+        console.log(booksToFilter)
+        if (description) {
+            booksToFilter = booksToFilter.filter(
+                book => book.description === description
+            )
+        }
+        if (author) {
+            booksToFilter = booksToFilter.filter(
+                book => book.author === author
+            )
+        }
+        if (price) {
+            booksToFilter = booksToFilter.filter(
+                book => book.price === price
+            )
+        }
+
+        return booksToFilter;
     }
 
 }
