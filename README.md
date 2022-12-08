@@ -1,3 +1,11 @@
+### FROM CANDIDATE
+
+For JWT authentication call the following endpoint /auth/authenticate POST with this payload:
+{
+    "username": "Masha",
+    "password": "NotMasha"
+} 
+
 ### Objective
 
 Your assignment is to implement a bookstore REST API using Node and Express.
