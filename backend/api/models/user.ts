@@ -16,6 +16,14 @@ export default class User {
         this.authorPseudonym = authorPseudonym;
     }
 
+    /**
+    * Returns a `User` by one of it's unique identifiers `id` or `username`
+    *
+    * @param id - The `id` of the user to look it up by
+    * @param username - The `username` of the user to look it up by
+    * 
+    * @returns The `User` in case it is found by one of its id, returns `undefined` otherwise
+    */
     static getUserBy({ id = null, username = "" }): User | undefined {
         var user: User | undefined;
         if (id) {
