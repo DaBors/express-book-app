@@ -29,17 +29,17 @@ describe("Test all book api endpoints", () => {
     })
 
 
-    xit("get all books", async () => {
+    it("get all books", async () => {
         const resJson = await request(server).get("/books").set("Content-Type", "application/json");
         expect(resJson.statusCode).toBe(200);
-        expect(resJson.body).toEqual([mashasBook])
+        expect(resJson.body).toEqual([mashasBook, martonsBook])
 
         const resXml= await request(server).get("/books").set("Content-Type", "text/xml");
         expect(resXml.statusCode).toBe(200);
-        expect(resXml.text).toEqual(xml(JSON.stringify([mashasBook])))
+        expect(resXml.text).toEqual(xml(JSON.stringify([mashasBook, martonsBook])))
     });
 
-    xit("get all books filters", async () => {
+    it("get all books filters", async () => {
         const resFirst = await request(server).get("/books").query({ title: 'MartonsTitle' }).set("Content-Type", "application/json");
         expect(resFirst.statusCode).toBe(200);
         expect(resFirst.body).toEqual([martonsBook])
