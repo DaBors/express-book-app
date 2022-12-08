@@ -6,6 +6,14 @@ import test_data from "../database/test_users.json";
 class DataService {
 
     /**
+    * Deletes all current users and overwrites the db
+    */
+    static deleteAllUsers() {
+        users = []
+        fs.writeFileSync(`./backend/api/database/${process.env.NODE_ENV}_users.json`, JSON.stringify(users, null, 2), "utf-8");
+    }
+
+    /**
     * Saves a User in the db in case the username doesn't already exists
     *
     * @param user - The `user` object to be saved
