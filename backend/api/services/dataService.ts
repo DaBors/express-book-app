@@ -1,7 +1,9 @@
 import * as fs from "fs";
 import User from "../models/user";
-import development_data from "../database/development_users.json";
-import test_data from "../database/test_users.json";
+import development_user_data from "../database/development_users.json";
+import test_user_data from "../database/test_users.json";
+import development_book_data from "../database/development_books.json";
+import test_book_data from "../database/test_books.json";
 import Book from "../models/book";
 
 class DataService {
@@ -40,10 +42,10 @@ class DataService {
     static loadAllUsers(): User[] {
         switch (process.env.NODE_ENV) {
             case "development": {
-                return development_data as User[];
+                return development_user_data as User[];
             }
             case "test": {
-                return test_data as User[];
+                return test_user_data as User[];
             }
             default: {
                 return []
@@ -55,7 +57,10 @@ class DataService {
     /**
     * Deletes all current books and overwrites the db
     */
-    static deleteAllBooks() {}
+    static deleteAllBooks() {
+        books = []
+        fs.writeFileSync(`./backend/api/database/${process.env.NODE_ENV}_books.json`, JSON.stringify(books, null, 2), "utf-8");
+    }
 
     /**
     * Saves a `Book` in the db in case the same author didn't publish a book with the same title
@@ -65,6 +70,15 @@ class DataService {
     * @returns `true` if the book was successfully saved, returns `false` otherwise
     */
     static saveBook(book: Book): boolean {
+        if (Book.getBookBy({ id: book.id }) === undefined) {
+            if (Book.getBookBy({ author_id: book.author_id, title: book.title }) === undefined) {
+                books.push(book)
+                fs.writeFileSync(`./backend/api/database/${process.env.NODE_ENV}_books.json`, JSON.stringify(books, null, 2), "utf-8");
+
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -74,7 +88,17 @@ class DataService {
     * @returns `Book` array that holds the data of the books stored in the db
     */
     static loadAllBooks(): Book[] {
-        return []
+        switch (process.env.NODE_ENV) {
+            case "development": {
+                return development_book_data as Book[];
+            }
+            case "test": {
+                return test_book_data as Book[];
+            }
+            default: {
+                return []
+            }
+        }
     }
 
 }

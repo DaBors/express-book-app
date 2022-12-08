@@ -38,7 +38,7 @@ describe("Testing data service book functionalities", () => {
         DataService.deleteAllUsers();
     })
 
-    xit("can store new book", async () => {
+    it("can store new book", async () => {
         const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
         const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveUser(masha);
@@ -47,7 +47,7 @@ describe("Testing data service book functionalities", () => {
         expect(1).toEqual(books.length);
     });
 
-    xit("can delete all books", async () => {
+    it("can delete all books", async () => {
         const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
         const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveUser(masha);
