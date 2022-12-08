@@ -12,21 +12,22 @@ describe("Testing book model functionalities", () => {
         DataService.deleteAllUsers();
     })
 
-    xit("can find book", async () => {
+    it("can find book", async () => {
         const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
-        const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveUser(masha);
-        DataService.saveBook(mashasBook)
+        
+        const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
+        DataService.saveBook(mashasBook);
 
         expect(Book.getBookBy({ id: mashasBook.id })).toEqual(mashasBook);
-        expect(Book.getBookBy({ title: mashasBook.title, author_id: masha.id })).toEqual(mashasBook);
+        expect(Book.getBookBy({ author_id: masha.id, title: mashasBook.title })).toEqual(mashasBook);
     });
 
-    xit("cannot find book that doesn't exists", async () => {
+    it("cannot find book that doesn't exists", async () => {
         const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
         const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveUser(masha);
-        DataService.saveBook(mashasBook)
+        DataService.saveBook(mashasBook);
 
         expect(Book.getBookBy({ id: "notExistingId" })).toEqual(undefined);
     });

@@ -28,6 +28,22 @@ export default class Book {
     * @returns The `Book` in case it is found by one of its id, returns `undefined` otherwise
     */
     static getBookBy({ id = "", author_id = "", title = ""}): Book | undefined {
+        var book: Book | undefined;
+        if (id) {
+            book = books.find((book) => {
+                return book.id === id;
+            });
+
+            return book;
+        }
+        else if (author_id && title) {
+            book = books.find((book) => {
+                return (book.author_id === author_id && book.title === title);
+            });
+
+            return book;
+        }
+
         return undefined;
     }
 
