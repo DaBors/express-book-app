@@ -2,6 +2,7 @@ import * as fs from "fs";
 import User from "../models/user";
 import development_data from "../database/development_users.json";
 import test_data from "../database/test_users.json";
+import Book from "../models/book";
 
 class DataService {
 
@@ -14,7 +15,7 @@ class DataService {
     }
 
     /**
-    * Saves a User in the db in case the username doesn't already exists
+    * Saves a `User` in the db in case the username doesn't already exists
     *
     * @param user - The `user` object to be saved
     * 
@@ -51,6 +52,31 @@ class DataService {
 
     }
 
+    /**
+    * Deletes all current books and overwrites the db
+    */
+    static deleteAllBooks() {}
+
+    /**
+    * Saves a `Book` in the db in case the same author didn't publish a book with the same title
+    *
+    * @param book - The `book` object to be saved
+    * 
+    * @returns `true` if the book was successfully saved, returns `false` otherwise
+    */
+    static saveBook(book: Book): boolean {
+        return false;
+    }
+
+    /**
+    * Returns all the books stored in the db corresponding to the current environment
+    * 
+    * @returns `Book` array that holds the data of the books stored in the db
+    */
+    static loadAllBooks(): Book[] {
+        return []
+    }
+
 }
 
 /**
@@ -58,4 +84,9 @@ class DataService {
 */
 var users: User[] = DataService.loadAllUsers();
 
-export { users, DataService };
+/**
+* Stores all the `Book` objects in the current environment
+*/
+var books: Book[] = DataService.loadAllBooks();
+
+export { users, books, DataService };
