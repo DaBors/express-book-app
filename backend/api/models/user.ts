@@ -24,17 +24,21 @@ export default class User {
     * 
     * @returns The `User` in case it is found by one of its id, returns `undefined` otherwise
     */
-    static getUserBy({ id = null, username = "" }): User | undefined {
+    static getUserBy({ id = "", username = "" }): User | undefined {
         var user: User | undefined;
         if (id) {
             user = users.find((user) => {
                 return user.id === id;
             });
+
+            return user;
         }
         else if (username) {
             user = users.find((user) => {
                 return user.username === username;
             });
+
+            return user;
         }
 
         return undefined;
