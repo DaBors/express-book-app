@@ -17,7 +17,7 @@ export default class User {
     }
 
     /**
-    * Returns a `User` by one of it's unique identifiers `id` or `username`
+    * Returns a `User` by one of its unique identifiers `id` or `username`
     *
     * @param id - The `id` of the user to look it up by
     * @param username - The `username` of the user to look it up by
