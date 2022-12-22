@@ -4,8 +4,12 @@ import cors from "cors";
 import debug from "debug";
 import morgan from "morgan";
 
+import dotenv from "dotenv";
+
 import { booksRouter } from "./api/routes/booksRoutes";
 import { authRouter } from "./api/routes/auth";
+
+dotenv.config()
 
 const app: express.Application = express();
 

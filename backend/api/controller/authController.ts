@@ -2,10 +2,7 @@ import { Request, Response } from "express";
 import xml from "xml";
 import User from "../models/user";
 import jsonwebtoken from "jsonwebtoken";
-import dotenv from "dotenv";
 import AuthService from "../services/authService";
-
-dotenv.config()
 
 const generateResponse = (respCode: number, respInfo: Object, req: Request, res: Response) => {
     const contentType: string | undefined = req.headers["content-type"]
