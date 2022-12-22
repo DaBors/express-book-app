@@ -34,7 +34,7 @@ describe("Test auth endpoints", () => {
             username: "Masha",
             password: "BadPassword"
         });
-        expect(res.statusCode).toBe(404);
+        expect(res.statusCode).toBe(401);
     });
 
 });
