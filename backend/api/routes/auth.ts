@@ -1,6 +1,6 @@
-import express from "express";
+import express, { Router } from "express";
 import { authenticate } from "../controller/authController";
 
-export const authRouter = express.Router()
+export const authRouter: Router = express.Router()
 
 authRouter.post('/authenticate', authenticate);

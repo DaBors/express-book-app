@@ -20,13 +20,13 @@ const generateResponse = (respCode: number, respInfo: Object, req: Request, res:
 
 
 const authenticate = (req: Request, res: Response) => {
-    const { username, password } = req.body;
+    const { username, password }: {username: string, password: string} = req.body;
 
     const user: User | undefined = User.getUserBy({ username: username });
     if (user) {
         const verified: boolean = AuthService.verifyUser(user, password);
         if (verified) {
-            const token = jsonwebtoken.sign({ id: user.id }, process.env.JWT_SECRET ?? "topSecretJwt", { expiresIn: 86400 });
+            const token: string = jsonwebtoken.sign({ id: user.id }, process.env.JWT_SECRET ?? "topSecretJwt", { expiresIn: 86400 });
             return generateResponse(200, { token }, req, res);
         }
     } 
