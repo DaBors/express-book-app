@@ -2,6 +2,7 @@ import request from "supertest";
 import User from "../../../backend/api/models/user";
 import { DataService } from "../../../backend/api/services/dataService";
 import { app } from "../../../backend/app";
+import jsonwebtoken, { JwtPayload } from "jsonwebtoken";
 
 describe("Test auth endpoints", () => {
     const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
@@ -23,6 +24,9 @@ describe("Test auth endpoints", () => {
             password: "NotMasha"
         });
         expect(res.statusCode).toBe(200);
+        const token = res.body.token;
+        const jwt = jsonwebtoken.verify(token, process.env.JWT_SECRET ?? "topSecretJwt") as JwtPayload;
+        expect(jwt.id).toBe(masha.id)
     });
 
     it("get jwt with wrong password", async () => {
