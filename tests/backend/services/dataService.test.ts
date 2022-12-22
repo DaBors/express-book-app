@@ -12,14 +12,14 @@ describe("Testing data service user functionalities", () => {
     })
 
     it("can store new user", async () => {
-        const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
         DataService.saveUser(masha);
 
         expect(1).toEqual(users.length);
     });
 
     it("can delete all users", async () => {
-        const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const masha: User= new User("Masha", "NotMasha", "DefinitelyNotMasha");
         DataService.saveUser(masha);
 
         DataService.deleteAllUsers();
@@ -39,8 +39,8 @@ describe("Testing data service book functionalities", () => {
     })
 
     it("can store new book", async () => {
-        const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
-        const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
+        const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const mashasBook: Book = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveUser(masha);
         DataService.saveBook(mashasBook);
 
@@ -48,8 +48,8 @@ describe("Testing data service book functionalities", () => {
     });
 
     it("can delete all books", async () => {
-        const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
-        const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
+        const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const mashasBook: Book = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveUser(masha);
         DataService.saveBook(mashasBook);
 

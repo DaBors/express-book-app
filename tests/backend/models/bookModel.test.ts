@@ -13,10 +13,10 @@ describe("Testing book model functionalities", () => {
     })
 
     it("can find book", async () => {
-        const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
         DataService.saveUser(masha);
         
-        const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
+        const mashasBook: Book = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveBook(mashasBook);
 
         expect(Book.getBookBy({ id: mashasBook.id })).toEqual(mashasBook);
@@ -24,8 +24,8 @@ describe("Testing book model functionalities", () => {
     });
 
     it("cannot find book that doesn't exists", async () => {
-        const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
-        const mashasBook = new Book("Title", "Description", masha, "https://example.com", 200);
+        const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const mashasBook: Book = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveUser(masha);
         DataService.saveBook(mashasBook);
 

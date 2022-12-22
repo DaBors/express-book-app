@@ -11,8 +11,8 @@ describe("Testing user model functionalities", () => {
     })
 
     it("can find user", async () => {
-        const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
-        const marton = new User("Marton", "NotMarton", "DefinitelyNotMarton");
+        const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const marton: User = new User("Marton", "NotMarton", "DefinitelyNotMarton");
         DataService.saveUser(masha);
         DataService.saveUser(marton);
 
@@ -21,7 +21,7 @@ describe("Testing user model functionalities", () => {
     });
 
     it("cannot find user that doesn't exists", async () => {
-        const masha = new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
         DataService.saveUser(masha);
 
         expect(User.getUserBy({ username: "nonExistingUsername" })).toEqual(undefined);
