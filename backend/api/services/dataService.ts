@@ -15,7 +15,7 @@ class DataService {
     * Deletes all current users and overwrites the db
     */
     static deleteAllUsers() {
-        const users: User[] = []
+        users = []
         fs.writeFileSync(path.resolve(`./database/${process.env.NODE_ENV}_users.json`), JSON.stringify(users, null, 2), "utf-8");
     }
 
@@ -61,7 +61,7 @@ class DataService {
     * Deletes all current books and overwrites the db
     */
     static deleteAllBooks() {
-        const books: Book[] = []
+        books = []
         fs.writeFileSync(path.resolve(`./database/${process.env.NODE_ENV}_books.json`), JSON.stringify(books, null, 2), "utf-8");
     }
 
