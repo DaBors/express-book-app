@@ -20,7 +20,7 @@ class DataService {
     }
 
     /**
-    * Saves a `User` in the db in case the username doesn"t already exists
+    * Saves a `User` in the db in case the username doesn't already exists
     *
     * @param user - The `user` object to be saved
     * 
