@@ -7,7 +7,7 @@ export default class AuthService {
     * Creates a hash from the password provided by the user
     *
     * @param password - The password to create the hash from
-    * @remarks The hash contains the salt in itself, so only the hash needs to be stored
+    * @remarks - The hash contains the salt in itself, so only the hash needs to be stored
     * 
     * @returns The hash of the password
     */
