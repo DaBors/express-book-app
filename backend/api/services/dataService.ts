@@ -3,10 +3,10 @@ import User from "../models/user";
 import Book from "../models/book";
 import path from "path";
 
-var development_user_data = JSON.parse(fs.readFileSync(path.resolve("./database/development_users.json"), "utf-8"));
-var test_user_data = JSON.parse(fs.readFileSync(path.resolve("./database/test_users.json"), "utf-8"));
-var development_book_data = JSON.parse(fs.readFileSync(path.resolve("./database/development_books.json"), "utf-8"));
-var test_book_data = JSON.parse(fs.readFileSync(path.resolve("./database/test_books.json"), "utf-8"));
+var developmentUserData = JSON.parse(fs.readFileSync(path.resolve("./database/development_users.json"), "utf-8"));
+var testUserData = JSON.parse(fs.readFileSync(path.resolve("./database/test_users.json"), "utf-8"));
+var developmentBookData = JSON.parse(fs.readFileSync(path.resolve("./database/development_books.json"), "utf-8"));
+var testBookData = JSON.parse(fs.readFileSync(path.resolve("./database/test_books.json"), "utf-8"));
 
 
 class DataService {
@@ -45,10 +45,10 @@ class DataService {
     static loadAllUsers(): User[] {
         switch (process.env.NODE_ENV) {
             case "development": {
-                return development_user_data as User[];
+                return developmentUserData as User[];
             }
             case "test": {
-                return test_user_data as User[];
+                return testUserData as User[];
             }
             default: {
                 return []
@@ -93,10 +93,10 @@ class DataService {
     static loadAllBooks(): Book[] {
         switch (process.env.NODE_ENV) {
             case "development": {
-                return development_book_data as Book[];
+                return developmentBookData as Book[];
             }
             case "test": {
-                return test_book_data as Book[];
+                return testBookData as Book[];
             }
             default: {
                 return []
