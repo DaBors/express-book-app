@@ -5,12 +5,12 @@ describe("Testing auth service functionalities", () => {
 
     it("can verify user with right password", async () => {
         const marton: User = new User("Marton", "NotMarton", "DefinitelyNotMarton");
-        expect(AuthService.verifyUser(marton, "NotMarton")).toEqual(true);
+        expect(AuthService.authenticateUser(marton, "NotMarton")).toEqual(true);
     });
 
     it("won't verify user with wrong password", async () => {
         const marton: User = new User("Marton", "NotMarton", "DefinitelyNotMarton");
-        expect(AuthService.verifyUser(marton, "admin")).toEqual(false);
+        expect(AuthService.authenticateUser(marton, "admin")).toEqual(false);
     });
 
 });

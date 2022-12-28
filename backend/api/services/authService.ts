@@ -26,7 +26,7 @@ export default class AuthService {
     * 
     * @returns Returns true if the password matches to the hash, returns false otherwise
     */
-    static verifyUser(user: User, password: string): boolean {
+    static authenticateUser(user: User, password: string): boolean {
         if (bcrypt.compareSync(password, user.hash)) {
             return true;
         }
@@ -34,4 +34,4 @@ export default class AuthService {
         return false;
     }
 
-}
+}   
