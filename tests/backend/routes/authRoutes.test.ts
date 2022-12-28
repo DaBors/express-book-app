@@ -1,4 +1,4 @@
-import request, {Response} from "supertest";
+import request, { Response } from "supertest";
 import User from "../../../backend/api/models/user";
 import { DataService } from "../../../backend/api/services/dataService";
 import { app } from "../../../backend/app";
@@ -8,12 +8,15 @@ describe("Test auth endpoints", () => {
     const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
 
     beforeAll(async () => {
+        /**
+         * Add user to test db
+         */
         DataService.saveUser(masha);
     })
 
     afterAll(async () => {
         /**
-         * Close the server instance after each test
+         * Delete user from test db
          */
         DataService.deleteAllUsers();
     })

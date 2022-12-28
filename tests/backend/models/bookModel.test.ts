@@ -15,7 +15,7 @@ describe("Testing book model functionalities", () => {
     it("can find book", async () => {
         const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
         DataService.saveUser(masha);
-        
+
         const mashasBook: Book = new Book("Title", "Description", masha, "https://example.com", 200);
         DataService.saveBook(mashasBook);
 

@@ -19,7 +19,7 @@ describe("Testing data service user functionalities", () => {
     });
 
     it("can delete all users", async () => {
-        const masha: User= new User("Masha", "NotMasha", "DefinitelyNotMasha");
+        const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
         DataService.saveUser(masha);
 
         DataService.deleteAllUsers();

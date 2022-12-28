@@ -1,4 +1,4 @@
-import request, {Response} from "supertest";
+import request, { Response } from "supertest";
 import { app } from "../../backend/app";
 
 describe("GET /", () => {

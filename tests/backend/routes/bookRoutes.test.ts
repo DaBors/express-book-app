@@ -1,4 +1,4 @@
-import request, {Response} from "supertest";
+import request, { Response } from "supertest";
 import xml from "xml";
 import Book from "../../../backend/api/models/book";
 import User from "../../../backend/api/models/user";
@@ -13,6 +13,9 @@ describe("Test all book api endpoints", () => {
     const martonsBook: Book = new Book("MartonsTitle", "MartonsDescription", marton, "https://marton.com", 200);
 
     beforeAll(async () => {
+        /**
+         * Add users and books to test db
+         */
         DataService.saveUser(masha);
         DataService.saveBook(mashasBook);
         DataService.saveUser(marton);
@@ -20,6 +23,9 @@ describe("Test all book api endpoints", () => {
     })
 
     afterAll(async () => {
+        /**
+         * Delete users and books from test db
+         */
         DataService.deleteAllBooks();
         DataService.deleteAllUsers();
     })
