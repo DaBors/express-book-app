@@ -23,8 +23,8 @@ app.use(cors());
 
 app.use(morgan("dev"));
 
-app.get("/", (_: express.Request, res: express.Response) => {
-    res.status(200).send(`Server is running at http://localhost:${port}`)
+app.get("/", (_: express.Request, response: express.Response) => {
+    response.status(200).send(`Server is running at http://localhost:${port}`)
 });
 
 app.use("/books", booksRouter);

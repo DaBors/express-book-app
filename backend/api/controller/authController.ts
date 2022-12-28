@@ -5,18 +5,18 @@ import AuthService from "../services/authService";
 import generateResponse from "./responseController";
 
 
-const authenticate = (req: Request, res: Response) => {
-    const { username, password }: { username: string, password: string } = req.body;
+const authenticate = (request: Request, response: Response) => {
+    const { username, password }: { username: string, password: string } = request.body;
 
     const user: User | undefined = User.getUserBy({ username: username });
     if (user) {
         const verified: boolean = AuthService.verifyUser(user, password);
         if (verified) {
             const token: string = jsonwebtoken.sign({ userId: user.id }, process.env.JWT_SECRET ?? "topSecretJwt", { expiresIn: 86400 });
-            return generateResponse(200, { token }, req, res);
+            return generateResponse(200, { token }, request, response);
         }
     }
-    return generateResponse(401, { error: "Incorrect username or password" }, req, res);
+    return generateResponse(401, { error: "Incorrect username or password" }, request, response);
 };
 
 /**

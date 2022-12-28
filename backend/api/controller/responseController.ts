@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
 import xml from "xml";
 
-const generateResponse = (respCode: number, respInfo: Object, req: Request, res: Response) => {
+const generateResponse = (responseCode: number, responseInfo: Object, req: Request, response: Response) => {
     const contentType: string | undefined = req.headers["content-type"]
     if (contentType === "application/json") {
-        res.status(respCode).json(respInfo);
+        response.status(responseCode).json(responseInfo);
     }
     else if (contentType === "text/xml") {
-        res.set("Content-Type", "text/xml");
-        res.status(respCode).send(xml(JSON.stringify(respInfo)));
+        response.set("Content-Type", "text/xml");
+        response.status(responseCode).send(xml(JSON.stringify(responseInfo)));
     }
     else {
-        res.sendStatus(400);
+        response.sendStatus(400);
     }
 }
 
