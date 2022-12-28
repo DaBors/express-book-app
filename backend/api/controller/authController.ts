@@ -12,7 +12,7 @@ const authenticate = (req: Request, res: Response) => {
     if (user) {
         const verified: boolean = AuthService.verifyUser(user, password);
         if (verified) {
-            const token: string = jsonwebtoken.sign({ id: user.id }, process.env.JWT_SECRET ?? "topSecretJwt", { expiresIn: 86400 });
+            const token: string = jsonwebtoken.sign({ userId: user.id }, process.env.JWT_SECRET ?? "topSecretJwt", { expiresIn: 86400 });
             return generateResponse(200, { token }, req, res);
         }
     }

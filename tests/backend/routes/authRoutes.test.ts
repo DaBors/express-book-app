@@ -26,7 +26,7 @@ describe("Test auth endpoints", () => {
         expect(res.statusCode).toBe(200);
         const token: string = res.body.token;
         const jwt: JwtPayload = jsonwebtoken.verify(token, process.env.JWT_SECRET ?? "topSecretJwt") as JwtPayload;
-        expect(jwt.id).toBe(masha.id)
+        expect(jwt.userId).toBe(masha.id)
     });
 
     it("get jwt with wrong password", async () => {
