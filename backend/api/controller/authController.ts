@@ -27,7 +27,7 @@ const authenticate = (request: Request, response: Response) => {
 * 
 * @returns The User object representing the authenticated user, null if the jwt couldn't be verified
 */
-const verifyUser = (request: Request, response: Response): User | null => {
+const verifyLoggedInUser = (request: Request, response: Response): User | null => {
     if (request.headers.authorization && request.headers.authorization.split(" ")[0] === "Bearer") {
         const token = request.headers.authorization.split(' ')[1];
         const jwt: JwtPayload = jsonwebtoken.verify(token, process.env.JWT_SECRET ?? "topSecretJwt") as JwtPayload;
@@ -45,4 +45,4 @@ const verifyUser = (request: Request, response: Response): User | null => {
     return null;
 };
 
-export { authenticate, verifyUser };
+export { authenticate, verifyLoggedInUser };
