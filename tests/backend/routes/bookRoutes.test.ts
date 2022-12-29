@@ -43,7 +43,7 @@ describe("Test all book api endpoints", () => {
         expect(resNoContentType.statusCode).toBe(400);
     });
 
-    it("get all books filters", async () => {
+    it("get list of books", async () => {
         const resFirst: Response = await request(app).get("/books").query({ title: 'MartonsTitle' }).set("Content-Type", "application/json");
         expect(resFirst.statusCode).toBe(200);
         expect(resFirst.body).toEqual([martonsBook]);
@@ -60,7 +60,7 @@ describe("Test all book api endpoints", () => {
 
     });
 
-    it("can't get book detail with wrong id ", async () => {
+    it("can't get book detail with wrong id", async () => {
         const res: Response = await request(app).get(`/books/${"notAnId"}`).set("Content-Type", "application/json");
         expect(res.statusCode).toBe(404);
     });
