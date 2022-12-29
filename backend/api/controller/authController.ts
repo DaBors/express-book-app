@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import User from "../models/user";
-import jsonwebtoken, { JwtPayload } from "jsonwebtoken";
 import AuthService from "../services/authService";
 import generateResponse from "./responseController";
 
@@ -12,7 +11,7 @@ import generateResponse from "./responseController";
 * @param response - The response express object 
 * 
 */
-const authenticate = (request: Request, response: Response) => {
+const handleAuthenticateUser = (request: Request, response: Response) => {
     const { username, password }: { username: string, password: string } = request.body;
 
     const user: User | undefined = User.getUserBy({ username: username });
@@ -43,4 +42,4 @@ const handleVerifyLoggedInUser = (request: Request, response: Response): User | 
     return null;
 };
 
-export { authenticate, handleVerifyLoggedInUser };
+export { handleAuthenticateUser, handleVerifyLoggedInUser };
