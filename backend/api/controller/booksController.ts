@@ -9,7 +9,7 @@ import generateResponse from "./responseController";
 * @param response - The response express object 
 * 
 */
-const getAllBooks = (request: Request, response: Response) => {
+const getBookList = (request: Request, response: Response) => {
     const filteredBooks: Book[] = Book.filterBooksBy(request.query);
     generateResponse(200, filteredBooks, request, response);
 }
@@ -33,5 +33,5 @@ const getBookDetail = (request: Request, response: Response) => {
 
 }
 
-export { getAllBooks, getBookDetail };
+export { getBookList, getBookDetail };
 
