@@ -5,7 +5,7 @@ import User from "../../../backend/api/models/user";
 import { DataService } from "../../../backend/api/services/dataService";
 import { app } from "../../../backend/app";
 
-describe("Test all book api endpoints", () => {
+describe("Test get book api endpoints", () => {
     const masha: User = new User("Masha", "NotMasha", "DefinitelyNotMasha");
     const mashasBook: Book = new Book("MashasTitle", "MashasDescription", masha, "https://masha.com", 200);
 
