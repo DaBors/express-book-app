@@ -4,7 +4,14 @@ import jsonwebtoken, { JwtPayload } from "jsonwebtoken";
 import AuthService from "../services/authService";
 import generateResponse from "./responseController";
 
-
+/**
+* Authenticates the user by their username and password.
+* Returns a response with jwt and 200 code if the authentication was successful, returns 401 status code otherwise
+*
+* @param request - The request express object 
+* @param response - The response express object 
+* 
+*/
 const authenticate = (request: Request, response: Response) => {
     const { username, password }: { username: string, password: string } = request.body;
 
