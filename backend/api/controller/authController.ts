@@ -17,9 +17,8 @@ const authenticate = (request: Request, response: Response) => {
 
     const user: User | undefined = User.getUserBy({ username: username });
     if (user) {
-        const verified: boolean = AuthService.authenticateUser(user, password);
-        if (verified) {
-            const token: string = jsonwebtoken.sign({ userId: user.id }, process.env.JWT_SECRET ?? "topSecretJwt", { expiresIn: 86400 });
+        const token: string | null = AuthService.authenticateUser(user, password);
+        if (token) {
             return generateResponse(200, { token }, request, response);
         }
     }

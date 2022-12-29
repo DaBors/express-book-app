@@ -1,5 +1,6 @@
 import * as bcrypt from "bcrypt";
 import User from "../models/user";
+import jsonwebtoken, { JwtPayload } from "jsonwebtoken";
 
 export default class AuthService {
 
@@ -26,12 +27,13 @@ export default class AuthService {
     * 
     * @returns Returns true if the password matches to the hash, returns false otherwise
     */
-    static authenticateUser(user: User, password: string): boolean {
+    static authenticateUser(user: User, password: string): string | null {
         if (bcrypt.compareSync(password, user.hash)) {
-            return true;
+            const token: string = jsonwebtoken.sign({ userId: user.id }, process.env.JWT_SECRET ?? "topSecretJwt", { expiresIn: 86400 });
+            return token
         }
 
-        return false;
+        return null;
     }
 
 }   
