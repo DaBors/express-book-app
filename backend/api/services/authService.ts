@@ -1,4 +1,5 @@
 import * as bcrypt from "bcrypt";
+import { Request } from "express";
 import User from "../models/user";
 import jsonwebtoken, { JwtPayload } from "jsonwebtoken";
 
@@ -36,4 +37,24 @@ export default class AuthService {
         return null;
     }
 
+    /**
+    * Verifies the user making the api call based on the Jwt provided in the authorization header
+    *
+    * @param request - The request express object
+    * 
+    * @returns The User object representing the authenticated user, null if the jwt couldn't be verified
+    */
+    static verifyLoggedInUser(request: Request): User | null {
+        if (request.headers.authorization && request.headers.authorization.split(" ")[0] === "Bearer") {
+            const token = request.headers.authorization.split(' ')[1];
+            const jwt: JwtPayload = jsonwebtoken.verify(token, process.env.JWT_SECRET ?? "topSecretJwt") as JwtPayload;
+    
+            const user: User | undefined = User.getUserBy({ id: jwt.userId });
+            if (user) {
+                return user;
+            }
+        }
+
+        return null;
+    }
 }   

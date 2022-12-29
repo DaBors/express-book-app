@@ -31,24 +31,16 @@ const authenticate = (request: Request, response: Response) => {
 * @param request - The request express object 
 * @param response - The response express object 
 * 
-* @returns The User object representing the authenticated user, null if the jwt couldn't be verified
+* @returns The User object representing the authenticated user, returns with 401 if the jwt couldn't be verified
 */
-const verifyLoggedInUser = (request: Request, response: Response): User | null => {
-    if (request.headers.authorization && request.headers.authorization.split(" ")[0] === "Bearer") {
-        const token = request.headers.authorization.split(' ')[1];
-        const jwt: JwtPayload = jsonwebtoken.verify(token, process.env.JWT_SECRET ?? "topSecretJwt") as JwtPayload;
-
-        const user: User | undefined = User.getUserBy({ id: jwt.userId });
-        if (user) {
-            return user;
-        }
-
-        response.sendStatus(400);
-        return null;
+const handleVerifyLoggedInUser = (request: Request, response: Response): User | null => {
+    const user: User | null = AuthService.verifyLoggedInUser(request);
+    if (user) {
+        return user;
     }
 
     response.sendStatus(401);
     return null;
 };
 
-export { authenticate, verifyLoggedInUser };
+export { authenticate, handleVerifyLoggedInUser };
