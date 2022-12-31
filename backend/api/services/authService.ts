@@ -21,12 +21,12 @@ export default class AuthService {
     }
 
     /**
-    * Verifies if the user has provided the right password that corresponds to the stored hash
+    * Verifies if the user has provided the right password that corresponds to the stored hash and returns the authorization jwt
     *
     * @param user - The User object that represent the user who needs to be verified
     * @param password - The password that has submitted for verification
     * 
-    * @returns Returns true if the password matches to the hash, returns false otherwise
+    * @returns Returns the authorization jwt if the password matches to the hash, returns null otherwise
     */
     static authenticateUser(user: User, password: string): string | null {
         if (bcrypt.compareSync(password, user.hash)) {
